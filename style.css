@@ -1,3 +1,8 @@
+html {
+    background-color: black;
+}
+
+
 .cell{
     display: table-cell;
     background-color: white;
@@ -5,5 +10,34 @@
 
 .hover {
     display: table-cell;
+}
+
+#sketchBox {
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+#title {
+    font-family: cursive;
+    text-align: center;
+    color: #1e90ff;
     background-color: black;
 }
+
+.buttons {
+    background-color: black;
+    border: 2px solid #1e90ff;
+    color: #1e90ff;
+    padding: 15px 32px;
+    margin-bottom: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+  }
+  .buttons:hover {
+    background-color: #1e90ff;
+    color: white;
+  }

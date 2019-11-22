@@ -1,6 +1,6 @@
 function createSquareGrid(s)
 {
-    let e = document.body;
+    let e = document.getElementById("sketchBox");
     for(let i = 0 ; i < s ; i++)
     {
         let row = document.createElement("div");
@@ -33,13 +33,31 @@ function attachHover() {
     }
 }
 
+
+let resetBtn = document.getElementById("reset");
+let colorBtn = document.getElementById("colorBtn");
+resetBtn.addEventListener("click",resetFunction);
+colorBtn.addEventListener("click",colorFunction);
 let size = prompt("what size do you want your grid to be?");
 createSquareGrid(size);
 let clicked = false;
+let colorClicked = false;
+let x=100,y=0,z=0;
 
 function myHoverFunction(e) {
     if(clicked){
             e.target.classList.add("hover");
+            if(colorClicked)
+            {
+                e.target.style.backgroundColor = "rgb(" + x + "," + y + "," + z + ")";
+                
+                x=(x-100)%255;
+                y=(y+100)%255;
+                z=(z+100)%255;
+            }
+            else {
+                e.target.style.backgroundColor = "black";
+            }
             e.target.classList.remove("cell");
     }
 }
@@ -58,4 +76,21 @@ function myRightClickFunction(e){
         e.target.classList.remove("hover");
     }
     return false;
+}
+
+function resetFunction(e) {
+    document.querySelectorAll('.hover').forEach(e => e.remove());
+    document.querySelectorAll('.cell').forEach(e => e.remove());
+    let x = document.getElementById("sketchBox");
+    x.innerHTML = "";
+    
+    clicked = false;
+    colorClicked = false;
+    size = prompt("what size do you want your grid to be?");
+    createSquareGrid(size);
+
+}
+
+function colorFunction(e) {
+    colorClicked = true;
 }
